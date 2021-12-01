@@ -21,13 +21,13 @@ m = st.markdown("""
 
 ## CONNECT TO MONGO ##
 def get_mongo_collection():
-    #mongo_server_url = os.getenv('MONGO_URI')
-    #db_name = os.getenv('DB_NAME') 
-    #col_name = os.getenv('COLLECTION_NAME')
-    mongo_server_url = st.secrets["MONGO_URI"]
+    mongo_server_url = os.getenv('MONGO_URI')
+    db_name = os.getenv('DB_NAME') 
+    col_name = os.getenv('COLLECTION_NAME')
+    #mongo_server_url = st.secrets["MONGO_URI"]
     client = pymongo.MongoClient(mongo_server_url) 
-    db_name = st.secrets["DB_NAME"]
-    col_name = st.secrets["COLLECTION_NAME"]
+    #db_name = st.secrets["DB_NAME"]
+    #col_name = st.secrets["COLLECTION_NAME"]
     mongo_col = client.get_database(db_name)[col_name]
     return mongo_col
 
@@ -61,7 +61,7 @@ def handle_country_photos_data(selected_country):
 ## HEADER ##
 with header:
     st.title("Earth View Explorer :earth_africa:")
-    st.write("Welcome! This is a tool that allows you to systematically explore Earth View\'s beautiful landascape images.")
+    st.write("Welcome! This is a tool that allows you to systematically explore Earth View\'s beautiful landscape images.")
     st.write("Simply select a country \
         from the dropdown menu and enjoy the photos that appear below. You can download the photos too!")
     st.write("PS. they make for stunning wallpapers :)")
