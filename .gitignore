@@ -4,5 +4,3 @@ venv/
 .streamlit/secrets.toml
 streamlit/
 __pycache__
-data_main.py
-data_fetcher.py
