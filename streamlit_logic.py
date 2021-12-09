@@ -17,7 +17,6 @@ class Model():
             os.mkdir("images")
         urllib.request.urlretrieve(img_url, f"images/{file_name}.jpg")
          
-
     def delete_images_folder(self):
         if os.path.exists("images"):
             shutil.rmtree("images") 

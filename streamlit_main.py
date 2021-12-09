@@ -19,6 +19,7 @@ m = st.markdown("""
             </style>""", unsafe_allow_html=True)
 
 
+#GLOBAL VARIABLES AND METHODS 
 ## CONNECT TO MONGO ##
 def get_mongo_collection():
     mongo_server_url = os.getenv('MONGO_URI')
@@ -36,17 +37,18 @@ header = st.container()
 dropdown_select = st.container()
 photos = st.container()
 
+#variables
+col = get_mongo_collection()
+model = Model(col)
+photos_urls_and_captions = []
+country_photos_data = []
+
 def handle_img_download(img_url, img_name):
     print(img_name)
     model.save_img_to_file(img_url, img_name)
 
 def delete_images_folder():
     model.delete_images_folder()
-
-col = get_mongo_collection()
-model = Model(col)
-photos_urls_and_captions = []
-country_photos_data = []
 
 def handle_country_photos_data(selected_country):
     country_photos_data = model.get_country_photos_data(selected_country)
@@ -57,6 +59,8 @@ def handle_country_photos_data(selected_country):
         })
 
 
+
+#UI AND UX
 
 ## HEADER ##
 with header:
@@ -109,7 +113,6 @@ with photos:
                 key=photo_url
             )
         
-
         st.write("\n")
         st.write("\n")
         st.write("\n")
